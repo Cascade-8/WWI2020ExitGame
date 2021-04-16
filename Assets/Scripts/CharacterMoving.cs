@@ -22,7 +22,6 @@ public class CharacterMoving : MonoBehaviour
     {
         get => rb.position;
     }
-    
     // Update is called once per frame
     void Update()
     {

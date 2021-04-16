@@ -21,12 +21,10 @@ public class OverlayHandler : MonoBehaviour
     {
         get => character.GetComponent<CharacterHandler>().getTasks();
     }
-    
     private void FixedUpdate()
     {
         DrawOverlay();
     }
-
     public void DrawOverlay()
     {
         completedTaskOverlayMessage.text = "Abgeschlossene Herausforderungen: "+Tasks+" / 6";

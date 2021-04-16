@@ -71,7 +71,6 @@ public class CharacterHandler : MonoBehaviour
             tasks.GetComponent<TaskHandler>().HandleTaskScreen(-1);
         }
     }
-
     public int getScore()
     {
         return _score;
