@@ -28,7 +28,7 @@ public class CharacterMoving : MonoBehaviour
     private byte _completedTasks = 0;
     private Vector2 _movement;
     private Collider2D _coll;
-    private bool _spacePressed = false;
+    private bool _spacePressed;
     private bool _facingRight = true;
 
     // Start is called before the first frame update
@@ -39,9 +39,6 @@ public class CharacterMoving : MonoBehaviour
         interactionHint.enabled = true;
         drawOverlay();
         handleTaskScreen(-1);
-        print(tasks.transform.GetChild(0).transform.GetChild(0).name);
-        interactionCanvas.enabled = false;
-        _coll = null;
     }
     // Update is called once per frame
     void Update()
@@ -88,7 +85,6 @@ public class CharacterMoving : MonoBehaviour
             interactionCanvas.enabled = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.name == "Door")
@@ -134,7 +130,6 @@ public class CharacterMoving : MonoBehaviour
                 break;
         }
     }
-
     private void handleTaskScreen(int selector)
     {
         if (selector == -1)
@@ -151,7 +146,6 @@ public class CharacterMoving : MonoBehaviour
             tasks.transform.GetChild(selector).transform.GetChild(0).GetComponent<Renderer>().enabled = true;
         }
     }
-
     private void drawOverlay()
     {
         completedTaskOverlayMessage.text = "Abgeschlossene Herausforderungen: "+_completedTasks+" / 6";
