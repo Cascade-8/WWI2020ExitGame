@@ -40,9 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: GameSpace
+    uniqueID: 3440308437
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Tasks
+  - name: UI
     uniqueID: 1283661953
     locked: 0
