@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class TaskHandler : MonoBehaviour
     public Collider2D task4;
     public Collider2D task5;
     public Collider2D task6;
+    public GameObject character;
     
     
     
@@ -24,5 +26,6 @@ public class TaskHandler : MonoBehaviour
     {
         
     }
+    
     
 }
