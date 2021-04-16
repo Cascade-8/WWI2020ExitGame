@@ -7,8 +7,7 @@ public class CharacterMoving : MonoBehaviour
     public Camera mainCamera;
     public Rigidbody2D rb;
     public float walkingSpeed = 5f;
-    public GameObject character;
-    
+
     [Header("Animations")]
     public Animator characterAnimator;
     public Animator doorAnimator;
@@ -21,8 +20,12 @@ public class CharacterMoving : MonoBehaviour
     
     [Header("Tasks")]
     public GameObject tasks;
+
+    [Header("Overlay")] 
+    public Canvas overlay;
+    public Text completedTaskOverlayMessage;
     
-    
+    private byte _completedTasks = 0;
     private Vector2 _movement;
     private Collider2D _coll;
     private bool _spacePressed = false;
@@ -32,8 +35,9 @@ public class CharacterMoving : MonoBehaviour
     void Start()
     {
         interactionHint.enabled = false;
-        interactionHint.text = "Use Spacebar to interact!";
+        interactionHint.text = "Drücke die Leertaste zum interagieren";
         interactionHint.enabled = true;
+        drawOverlay();
         handleTaskScreen(-1);
         print(tasks.transform.GetChild(0).transform.GetChild(0).name);
         interactionCanvas.enabled = false;
@@ -104,29 +108,29 @@ public class CharacterMoving : MonoBehaviour
     {
         switch (coll.name)
         {
-            case "TaskArea1": interactionTitel.text = "";
+            case "TaskArea1": interactionTitel.text = "Bitübertragung";
                 handleTaskScreen(0);
-                interactionMessage.text = "This is the text for Task 1!\nPlease execute the following task!";
+                interactionMessage.text = "\nFinde die geheime Botschaft\nund gebe sie in das Gerät ein";
                 break;
-            case "TaskArea2": interactionTitel.text = coll.name;
+            case "TaskArea2": interactionTitel.text = "Sicherungsschicht";
                 handleTaskScreen(1);
-                interactionMessage.text = "This is the text for Task 2!\nPlease execute the following task!";
+                interactionMessage.text = "\nKabel verbinden\nPlease execute the following task!";
                 break;
-            case "TaskArea3": interactionTitel.text = coll.name;
+            case "TaskArea3": interactionTitel.text = "Netzwerkschicht";
                 handleTaskScreen(2);
-                interactionMessage.text = "This is the text for Task 3!\nPlease execute the following task!";
+                interactionMessage.text = "\nMastermind!\nKnacke das Passwort";
                 break;
-            case "TaskArea4": interactionTitel.text = coll.name;
+            case "TaskArea4": interactionTitel.text = "Transportschicht";
                 handleTaskScreen(3);
-                interactionMessage.text = "This is the text for Task 4!\nPlease execute the following task!";
+                interactionMessage.text = "\nIP Adresse der DHBW rausfinden\nPlease execute the following task!";
                 break;
-            case "TaskArea5": interactionTitel.text = coll.name;
+            case "TaskArea5": interactionTitel.text = "Sitzungsschicht";
                 handleTaskScreen(4);
-                interactionMessage.text = "This is the text for Task 5!\nPlease execute the following task!";
+                interactionMessage.text = "\nWebsite Moritz\nPlease execute the following task!";
                 break;
-            case "TaskArea6": interactionTitel.text = coll.name;
+            case "TaskArea6": interactionTitel.text = "Präsentationsschicht";
                 handleTaskScreen(5);
-                interactionMessage.text = "This is the text for Task 6!\nPlease execute the following task!";
+                interactionMessage.text = "\nTBD\nPlease execute the following task!";
                 break;
         }
     }
@@ -146,5 +150,10 @@ public class CharacterMoving : MonoBehaviour
         {
             tasks.transform.GetChild(selector).transform.GetChild(0).GetComponent<Renderer>().enabled = true;
         }
+    }
+
+    private void drawOverlay()
+    {
+        completedTaskOverlayMessage.text = "Abgeschlossene Herausforderungen: "+_completedTasks+" / 6";
     }
 }
