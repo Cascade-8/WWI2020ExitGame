@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CharacterMoving.cs" />
+     <Compile Include="Assets\Scripts\TaskHandler.cs" />
      <Reference Include="UnityEngine">
      <HintPath>G:/DevelopmentProjects/Unity/2021.1.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
