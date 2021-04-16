@@ -8,8 +8,7 @@ public class CharacterMoving : MonoBehaviour
     
     public float walkingSpeed = 5f;
     private Vector2 _movement;
-    
-    
+
     // Start is called before the first frame update
     void Start(){}
     // Update is called once per frame
