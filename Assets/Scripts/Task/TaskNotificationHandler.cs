@@ -8,7 +8,7 @@ namespace Scripts
     {
         [Header("Tasks")]
         public GameObject tasks;
-        
+
         [Header("InteractionCanvas")]
         public Canvas interactionCanvas;
         public Text interactionTitel;

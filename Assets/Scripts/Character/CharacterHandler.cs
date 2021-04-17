@@ -5,12 +5,17 @@ using UnityEngine;
 
     public class CharacterHandler : MonoBehaviour
     {
-        [Header("Animators")] public Animator doorAnimator;
+        [Header("GameHandler")]
+        public GameObject gameHandler;
+        
+        [Header("Animators")] 
+        public Animator doorAnimator;
 
-        [Header("UI Handlers")] public GameObject tasks;
+        [Header("UI Handlers")] 
+        public GameObject tasks;
+        public GameObject taskArea;
 
         private Collider2D _coll;
-        private bool _spacePressed;
         private byte _completedTasks;
         private int _score;
 
@@ -24,17 +29,10 @@ using UnityEngine;
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKey(KeyCode.Space) && _coll != null && !_spacePressed)
+            if (Input.GetKey(KeyCode.Space) && _coll != null && _coll.name != "Door")
             {
-                _spacePressed = true;
-                _completedTasks++;
-                _score = _completedTasks * 5;
-                print("Interact with " + _coll.name);
-                Loader.Load(Loader.Scene.Task);
-            }
-            else if (Input.GetKeyUp(KeyCode.Space))
-            {
-                _spacePressed = false;
+                taskArea.GetComponent<TaskAreaHandler>().ToggleTaskArea();
+                gameHandler.GetComponent<GameHandler>().SwapCameras();
             }
         }
 
@@ -77,8 +75,17 @@ using UnityEngine;
             return _score;
         }
 
+        public void setScore(int s)
+        {
+            _score = s;
+        }
         public byte getTasks()
         {
             return _completedTasks;
+        }
+
+        public void setTasks(byte t)
+        {
+            _completedTasks = t;
         }
     }

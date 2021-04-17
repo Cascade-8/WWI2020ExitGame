@@ -42,11 +42,13 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameHandler\OverlayHandler.cs" />
-     <Compile Include="Assets\Scripts\Task\TaskHandler.cs" />
+     <Compile Include="Assets\Scripts\Task\TaskNotificationHandler.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMoving.cs" />
-     <Compile Include="Assets\Scripts\GameHandler\Loader.cs" />
-     <Compile Include="Assets\Scripts\GameHandler\BackButtonHandler.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\ButtonHandler.cs" />
+     <Compile Include="Assets\Scripts\Task\TaskAreaHandler.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\GameHandler.cs" />
+     <Compile Include="Assets\Scripts\Task\Digit\DigitTaskHandler.cs" />
      <Reference Include="UnityEngine">
      <HintPath>G:/DevelopmentProjects/Unity/2021.1.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
