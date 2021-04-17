@@ -46,6 +46,7 @@
      <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMoving.cs" />
      <Compile Include="Assets\Scripts\GameHandler\Loader.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\BackButtonHandler.cs" />
      <Reference Include="UnityEngine">
      <HintPath>G:/DevelopmentProjects/Unity/2021.1.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
