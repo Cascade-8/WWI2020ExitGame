@@ -20,32 +20,32 @@ namespace Scripts
             interactionHint.enabled = true;
             switch (coll.name)
             {
-                case "TaskArea1": interactionTitel.text = "Bitübertragung";
+                case "TaskArea1": interactionTitel.text = "Bitübertragung".ToUpper();
                     HandleTaskScreen(0);
-                    interactionMessage.text = "\nFinde die geheime Botschaft\nund gebe sie in das Gerät ein";
+                    interactionMessage.text = "\nFinde die geheime Botschaft\nund gebe sie in das Gerät ein".ToUpper();
                     break;
-                case "TaskArea2": interactionTitel.text = "Sicherungsschicht";
+                case "TaskArea2": interactionTitel.text = "Sicherungsschicht".ToUpper();
                     HandleTaskScreen(1);
-                    interactionMessage.text = "\nKabel verbinden\nPlease execute the following task!";
+                    interactionMessage.text = "\nKabel verbinden\nPlease execute the following task!".ToUpper();
                     break;
-                case "TaskArea3": interactionTitel.text = "Netzwerkschicht";
+                case "TaskArea3": interactionTitel.text = "Netzwerkschicht".ToUpper();
                     HandleTaskScreen(2);
-                    interactionMessage.text = "\nMastermind!\nKnacke das Passwort";
+                    interactionMessage.text = "\nMastermind!\nKnacke das Passwort".ToUpper();
                     break;
-                case "TaskArea4": interactionTitel.text = "Transportschicht";
+                case "TaskArea4": interactionTitel.text = "Transportschicht".ToUpper();
                     HandleTaskScreen(3);
-                    interactionMessage.text = "\nIP Adresse der DHBW rausfinden\nPlease execute the following task!";
+                    interactionMessage.text = "\nIP Adresse der DHBW rausfinden\nPlease execute the following task!".ToUpper();
                     break;
-                case "TaskArea5": interactionTitel.text = "Sitzungsschicht";
+                case "TaskArea5": interactionTitel.text = "Sitzungsschicht".ToUpper();
                     HandleTaskScreen(4);
-                    interactionMessage.text = "\nWebsite Moritz\nPlease execute the following task!";
+                    interactionMessage.text = "\nWebsite Moritz\nPlease execute the following task!".ToUpper();
                     break;
-                case "TaskArea6": interactionTitel.text = "Präsentationsschicht";
+                case "TaskArea6": interactionTitel.text = "Präsentationsschicht".ToUpper();
                     HandleTaskScreen(5);
-                    interactionMessage.text = "\nTBD\nPlease execute the following task!";
+                    interactionMessage.text = ("\nTBD\nPlease execute the following task!").ToUpper();
                     break;
-                case "Door": interactionTitel.text = "Türe öffnen";
-                    interactionMessage.text = "\n Sie müssen zuerst alle Aufgaben erfüllen!\n";
+                case "Door": interactionTitel.text = "Türe öffnen".ToUpper();
+                    interactionMessage.text = "\n Sie müssen zuerst alle Aufgaben erfüllen!\n".ToUpper();
                     interactionHint.enabled = false;
                     break;
             }

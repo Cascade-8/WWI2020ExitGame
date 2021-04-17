@@ -27,7 +27,7 @@ public class OverlayHandler : MonoBehaviour
     }
     public void DrawOverlay()
     {
-        completedTaskOverlayMessage.text = "Abgeschlossene Herausforderungen: "+Tasks+" / 6";
+        completedTaskOverlayMessage.text = "Abgeschlossene Herausforderungen: "+Tasks+" / 6".ToUpper();
         scoreText.text = Score.ToString("D3");
     }
     
