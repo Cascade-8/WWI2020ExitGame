@@ -23,7 +23,7 @@ using UnityEngine;
         // Start is called before the first frame update
         void Start()
         {
-            tasks.GetComponent<TaskHandler>().HandleTaskScreen(-1);
+            tasks.GetComponent<TaskNotificationHandler>().HandleTaskScreen(-1);
         }
 
         // Update is called once per frame
@@ -46,13 +46,13 @@ using UnityEngine;
                 }
                 else
                 {
-                    tasks.GetComponent<TaskHandler>().SelectTaskMessage(coll);
+                    tasks.GetComponent<TaskNotificationHandler>().SelectTaskMessage(coll);
                 }
             }
             else
             {
                 _coll = coll;
-                tasks.GetComponent<TaskHandler>().SelectTaskMessage(coll);
+                tasks.GetComponent<TaskNotificationHandler>().SelectTaskMessage(coll);
             }
         }
 
@@ -61,12 +61,12 @@ using UnityEngine;
             if (coll.name == "Door")
             {
                 doorAnimator.SetBool("IsOpenTriggered", false);
-                tasks.GetComponent<TaskHandler>().HandleTaskScreen(-1);
+                tasks.GetComponent<TaskNotificationHandler>().HandleTaskScreen(-1);
             }
             else
             {
                 _coll = null;
-                tasks.GetComponent<TaskHandler>().HandleTaskScreen(-1);
+                tasks.GetComponent<TaskNotificationHandler>().HandleTaskScreen(-1);
             }
         }
 

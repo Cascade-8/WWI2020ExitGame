@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Scripts
 {
-    public class TaskHandler : MonoBehaviour
+    public class TaskNotificationHandler : MonoBehaviour
     {
         [Header("Tasks")]
         public GameObject tasks;
