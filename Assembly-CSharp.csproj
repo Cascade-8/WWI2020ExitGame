@@ -41,11 +41,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\OverlayHandler.cs" />
-     <Compile Include="Assets\Scripts\TaskHandler.cs" />
-     <Compile Include="Assets\Scripts\CharacterHandler.cs" />
-     <Compile Include="Assets\Scripts\CharacterMoving.cs" />
-     <Compile Include="Assets\Scripts\Loader.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\OverlayHandler.cs" />
+     <Compile Include="Assets\Scripts\Task\TaskHandler.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterMoving.cs" />
+     <Compile Include="Assets\Scripts\GameHandler\Loader.cs" />
      <Reference Include="UnityEngine">
      <HintPath>G:/DevelopmentProjects/Unity/2021.1.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
