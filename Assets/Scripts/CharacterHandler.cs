@@ -50,7 +50,6 @@ public class CharacterHandler : MonoBehaviour
             {
                 tasks.GetComponent<TaskHandler>().SelectTaskMessage(coll);
             }
-           
         }
         else
         {

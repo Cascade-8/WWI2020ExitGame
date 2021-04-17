@@ -18,7 +18,7 @@ public class CharacterMoving : MonoBehaviour
     {
         get => mainCamera.transform;
     }
-    public Vector2 CharacterPos
+    private Vector2 CharacterPos
     {
         get => rb.position;
     }
