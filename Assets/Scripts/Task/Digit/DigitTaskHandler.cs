@@ -1,55 +1,84 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
 
-public class DigitTaskHandler : MonoBehaviour
+namespace Task.Digit
 {
-    public GameObject digitAreas;
-    public GameObject InputAres;
+    public class DigitTaskHandler : MonoBehaviour
+    {
+        [Header("Areas")]
+        public GameObject digitAreas;
+        public GameObject inputAreas;
+    
+        [Header("Arrays")]
+        public string[] digitStrings;
+        public char[] expectedChars;
 
-    public string[] digitStrings;
-    // Start is called before the first frame update
-    void Start()
-    {
-        digitStrings = new string[4];
-        CreateBinaryCode();
-    }
-    public void CreateBinaryCode()
-    {
-        // string.PadLeft(8,'0');
-        Random random = new Random();
-        for (int i = 0; i < 4; i++)
+        [Header("Buttons")] 
+        public Button submitButton;
+    
+        // Start is called before the first frame update
+        void Start()
         {
-            int randomValue = random.Next(65, 90);
-            digitStrings[i] = Convert.ToString(randomValue, 2);
+            submitButton.onClick.AddListener(HandleSubmitAction);
+            digitStrings = new string[4];
+            expectedChars = new char[4];
+        
+            CreateBinaryCode();
+       
         }
-
-        FormatDigits();
-    }
-
-    private void FormatDigits()
-    {
-        for (int i = 0; i < 4; i++)
+        // ReSharper disable Unity.PerformanceAnalysis
+        public void CreateBinaryCode()
         {
-            char[] temp = digitStrings[i].ToCharArray();
-            digitStrings[i] = temp[0]+"";
-            for (int j = 1; j < 7; j++)
+            // string.PadLeft(8,'0');
+            Random random = new Random();
+            for (int i = 0; i < 4; i++)
             {
-                digitStrings[i] = digitStrings[i] + "  " + temp[j];
+                int randomValue = random.Next(65, 90);
+                expectedChars[i] = Convert.ToChar(randomValue);
+                digitStrings[i] = Convert.ToString(randomValue, 2);
+            }
+
+            FormatDigits();
+        }
+        private void FormatDigits()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                char[] temp = digitStrings[i].ToCharArray();
+                digitStrings[i] = temp[0]+"";
+                for (int j = 1; j < 7; j++)
+                {
+                    digitStrings[i] = digitStrings[i] + "  " + temp[j];
+                }
+            }
+
+            LoadStringsToArea();
+        }
+        private void LoadStringsToArea()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                digitAreas.transform.GetChild(i).GetComponent<Text>().text = digitStrings[i];
             }
         }
 
-        loadStringsToArea();
-    }
-    private void loadStringsToArea()
-    {
-        for (int i = 0; i < 4; i++)
+        public void HandleSubmitAction()
         {
-            digitAreas.transform.GetChild(i).GetComponent<Text>().text = digitStrings[i];
+            print(CompareUserInput());
+        }
+        public bool CompareUserInput()
+        {
+            int i = 0;
+            foreach(char c in expectedChars)
+            {
+                if (c+"" != inputAreas.transform.GetChild(i++).GetChild(1).GetComponent<Text>().text.ToUpper())
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

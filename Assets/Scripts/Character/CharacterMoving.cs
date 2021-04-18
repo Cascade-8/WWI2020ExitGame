@@ -1,9 +1,7 @@
-using Scripts;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
-
+namespace Character
+{
     public class CharacterMoving : MonoBehaviour
     {
         [Header("Character")] public Camera mainCamera;
@@ -47,3 +45,4 @@ using UnityEngine.UIElements;
             CameraPos.position = new Vector3(CharacterPos.x, CharacterPos.y, CameraPos.position.z);
         }
     }
+}

@@ -1,35 +1,36 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using GameEngine;
 using UnityEngine;
 
-public class TaskAreaHandler : MonoBehaviour
+namespace Task
 {
-    private bool _toggleEsc;
-    private bool _taskArea;
-    public GameObject gameHandler;
-    private void Update()
+    public class TaskAreaHandler : MonoBehaviour
     {
-        if (Input.GetKey(KeyCode.Escape) && !_toggleEsc && _taskArea)
+        private bool _toggleEsc;
+        private bool _taskArea;
+        public GameObject gameHandler;
+        private void Update()
         {
-            ToggleTaskArea();
-            gameHandler.GetComponent<GameHandler>().SwapCameras();
+            if (Input.GetKey(KeyCode.Escape) && !_toggleEsc && _taskArea)
+            {
+                ToggleTaskArea();
+                gameHandler.GetComponent<GameHandler>().SelectActiveCamera(0);
+            
+            }
+            else if(Input.GetKeyUp(KeyCode.Escape) && _toggleEsc && _taskArea)
+            {
+                _toggleEsc = false;
+            }
+
         }
-        else if(Input.GetKeyUp(KeyCode.Escape) && _toggleEsc && _taskArea)
+
+        public void ToggleTaskArea()
         {
-            _toggleEsc = false;
+            _taskArea = !_taskArea;
         }
 
-    }
-
-    public void ToggleTaskArea()
-    {
-        _taskArea = !_taskArea;
-    }
-
-    public bool isTaskArea()
-    {
-        return _taskArea;
+        public bool isTaskArea()
+        {
+            return _taskArea;
+        }
     }
 }
