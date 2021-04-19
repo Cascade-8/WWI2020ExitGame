@@ -41,7 +41,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\GameEngine\ButtonHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Digit\FieldSelection.cs" />
      <Compile Include="Assets\Scripts\GameEngine\GameHandler.cs" />
      <Compile Include="Assets\Scripts\GameEngine\OverlayHandler.cs" />
@@ -50,7 +49,8 @@
      <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Digit\DigitTaskHandler.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMoving.cs" />
-     <Compile Include="Assets\Scripts\Task\TaskAreaColliderHandler.cs" />
+     <Compile Include="Assets\Scripts\Task\TaskColliderHandler.cs" />
+     <Compile Include="Assets\Scripts\Task\TaskExecutionHandler.cs" />
      <Reference Include="UnityEngine">
      <HintPath>G:/DevelopmentProjects/Unity/2021.1.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>

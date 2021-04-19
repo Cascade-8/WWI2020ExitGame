@@ -1,4 +1,6 @@
 using System;
+using Character;
+using GameEngine;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
@@ -17,21 +19,19 @@ namespace Task.Digit
 
         [Header("Buttons")] 
         public Button submitButton;
-    
-        // Start is called before the first frame update
-        void Start()
+        
+        private void OnEnable()
         {
             submitButton.onClick.AddListener(HandleSubmitAction);
             digitStrings = new string[4];
             expectedChars = new char[4];
-        
             CreateBinaryCode();
-       
+            transform.parent.Find("MinigameTitle").GetComponent<Text>().text = "Binärzahlenrätsel";
         }
+
         // ReSharper disable Unity.PerformanceAnalysis
-        public void CreateBinaryCode()
+        private void CreateBinaryCode()
         {
-            // string.PadLeft(8,'0');
             Random random = new Random();
             for (int i = 0; i < 4; i++)
             {
@@ -53,7 +53,7 @@ namespace Task.Digit
                     digitStrings[i] = digitStrings[i] + "  " + temp[j];
                 }
             }
-
+            
             LoadStringsToArea();
         }
         private void LoadStringsToArea()
@@ -64,11 +64,20 @@ namespace Task.Digit
             }
         }
 
-        public void HandleSubmitAction()
+        private void HandleSubmitAction()
         {
-            print(CompareUserInput());
+            GameObject world = transform.parent.transform.parent.transform.parent.gameObject;
+            if (CompareUserInput())
+            {
+                gameObject.SetActive(false);
+                world.transform.Find("GameArea/Character").GetComponent<CharacterHandler>().SetTasks(1);
+                world.transform.Find("GameArea/Character").GetComponent<CharacterHandler>().SetScore(187);
+                world.GetComponent<GameHandler>().ToggleActiveArea();
+                
+            }
         }
-        public bool CompareUserInput()
+
+        private bool CompareUserInput()
         {
             int i = 0;
             foreach(char c in expectedChars)

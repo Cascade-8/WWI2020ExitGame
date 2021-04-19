@@ -4,22 +4,40 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -7767884254757057223
-    second: ScreenSprite_0
+    second: ScreenYellow1
   - first:
       213: 5178105770855786033
-    second: ScreenSprite_1
+    second: ScreenYellow2
   - first:
       213: -6139895340396882075
-    second: ScreenSprite_2
+    second: ScreenYellow3
   - first:
       213: -7702506487438184953
-    second: ScreenSprite_3
+    second: ScreenYellow4
   - first:
       213: 1119918949659190148
-    second: ScreenSprite_4
+    second: ScreenYellow5
   - first:
       213: -7786614831280314193
-    second: ScreenSprite_5
+    second: ScreenYellow6
+  - first:
+      213: 2801100206818094961
+    second: ScreenGreen1
+  - first:
+      213: -8084966638097495434
+    second: ScreenGreen2
+  - first:
+      213: 2750931729357915563
+    second: ScreenGreen3
+  - first:
+      213: -845542786633250550
+    second: ScreenGreen4
+  - first:
+      213: -1310428232726899841
+    second: ScreenGreen5
+  - first:
+      213: 5390521854337285814
+    second: ScreenGreen6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,13 +163,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ScreenSprite_0
+      name: ScreenYellow1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 20
+        y: 68
+        width: 26
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,13 +184,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScreenSprite_1
+      name: ScreenYellow2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 85
+        y: 68
+        width: 26
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,13 +205,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScreenSprite_2
+      name: ScreenYellow3
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
+        x: 131
+        y: 82
+        width: 62
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,13 +226,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScreenSprite_3
+      name: ScreenYellow4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
+        x: 220
+        y: 85
+        width: 16
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,13 +247,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScreenSprite_4
+      name: ScreenYellow5
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 279
+        y: 86
+        width: 28
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,13 +268,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ScreenSprite_5
+      name: ScreenYellow6
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
+        x: 341
+        y: 86
+        width: 34
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,6 +284,132 @@ TextureImporter:
       bones: []
       spriteID: fa8afb2f01360f390800000000000000
       internalID: -7786614831280314193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreenGreen1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 4
+        width: 26
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17f6aa71cc18fd620800000000000000
+      internalID: 2801100206818094961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreenGreen2
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 4
+        width: 26
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a805bbdad6ccf80800000000000000
+      internalID: -8084966638097495434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreenGreen3
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 17
+        width: 62
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba5cab135d54d2620800000000000000
+      internalID: 2750931729357915563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreenGreen4
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 20
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a09c450c0570444f0800000000000000
+      internalID: -845542786633250550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreenGreen5
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 21
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f739bac177c60dde0800000000000000
+      internalID: -1310428232726899841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ScreenGreen6
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 22
+        width: 34
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bef0c9f01bfeca40800000000000000
+      internalID: 5390521854337285814
       vertices: []
       indices: 
       edges: []

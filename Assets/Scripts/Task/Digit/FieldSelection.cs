@@ -11,11 +11,7 @@ namespace Task.Digit
         public int selector;
         public InputField[] inputFields = new InputField[4];
         private bool _toggleButton;
-    
-    
-    
-    
-    
+
         void Update()
         {
             if (Input.GetKey(KeyCode.Tab) && !_toggleButton)

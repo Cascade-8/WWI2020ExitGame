@@ -15,11 +15,11 @@ namespace GameEngine
 
         private int Score
         {
-            get => character.GetComponent<CharacterHandler>().getScore();
+            get => character.GetComponent<CharacterHandler>().GETScore();
         }
         private int Tasks
         {
-            get => character.GetComponent<CharacterHandler>().getTasks();
+            get => character.GetComponent<CharacterHandler>().GETTasks();
         }
         private void FixedUpdate()
         {
@@ -27,7 +27,7 @@ namespace GameEngine
         }
         public void DrawOverlay()
         {
-            completedTasks.text = character.GetComponent<CharacterHandler>().getTasks()+"   6";
+            completedTasks.text = character.GetComponent<CharacterHandler>().GETTasks()+"   6";
             scoreText.text = Score.ToString("D3");
         }
     
