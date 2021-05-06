@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Character\CharacterMoving.cs" />
      <Compile Include="Assets\Scripts\Task\Mastermind\RowHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Mastermind\Mastermind.cs" />
+     <Compile Include="Assets\Scripts\Task\Mastermind\dragHandling.cs" />
      <Reference Include="UnityEngine">
      <HintPath>G:/DevelopmentProjects/Unity/2021.1.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>

@@ -18,7 +18,7 @@ namespace Task
                     break;
                 case "TaskCollider2": taskscene.Find("SkeletonTask1").gameObject.SetActive(true);
                     break;
-                case "TaskCollider3": taskscene.Find("SkeletonTask2").gameObject.SetActive(true);
+                case "TaskCollider3": taskscene.Find("Mastermind").gameObject.SetActive(true);
                     break;
                 case "TaskCollider4": taskscene.Find("IPAdress").gameObject.SetActive(true);
                     break;
