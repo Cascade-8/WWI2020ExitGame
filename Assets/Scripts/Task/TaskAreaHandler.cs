@@ -1,3 +1,4 @@
+using System;
 using GameEngine;
 using UnityEngine;
 
@@ -7,11 +8,19 @@ namespace Task
     {
 
         public GameObject world;
+        private GameHandler _gameHandler;
+
+        private void OnEnable()
+        {
+            _gameHandler = world.GetComponent<GameHandler>();
+        }
+
         private void Update()
         {
             if (Input.GetKey(KeyCode.Escape))
             {
-                world.GetComponent<GameHandler>().ToggleActiveArea();
+                
+                //_gameHandler.ToggleActiveArea();
             }
         }
     }

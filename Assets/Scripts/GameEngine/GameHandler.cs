@@ -15,12 +15,11 @@ namespace GameEngine
 
         private void Start()
         {
+            //Application.OpenURL("https://www.google.com/");
             worldCamera.SetActive(true);
             gameArea.SetActive(true);
             taskCamera.SetActive(false);
             taskArea.SetActive(false);
-            //transform.Find("TaskArea/TaskScenes/BinaryDigitTask").gameObject.SetActive(false);
-            
         }
 
         public void ToggleActiveArea()

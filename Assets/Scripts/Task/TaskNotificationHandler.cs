@@ -12,9 +12,17 @@ namespace Task
         public void SelectTaskMessage(string coll)
         {
             interactionCanvas.enabled = true;
-            interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(true);
+            var hint = interactionCanvas.transform.Find("InteractionHint").gameObject;
             var message = interactionCanvas.transform.Find("InteractionMessage").gameObject;
             var title = interactionCanvas.transform.Find("InteractionTitle").gameObject;
+            hint.SetActive(true);
+            
+            // Re-render
+            hint.GetComponent<Text>().text = "";
+            hint.GetComponent<Text>().text = "Drücke die Leertaste zum Interagieren!";
+            message.GetComponent<Text>().text = "";
+            title.GetComponent<Text>().text = "";
+            
             switch (coll)
             {
                 case "TaskCollider1":   title.GetComponent<Text>().text = "Bitübertragung".ToUpper();
@@ -38,6 +46,10 @@ namespace Task
                 case "Door":            title.GetComponent<Text>().text = "Türe öffnen".ToUpper();
                                         message.GetComponent<Text>().text = "\nSchließe erst alle Herausforderungen ab!\n".ToUpper();
                                     interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(false);
+                    break;
+                default:                title.GetComponent<Text>().text = "".ToUpper();
+                                        message.GetComponent<Text>().text = "".ToUpper();
+                                    interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(false); 
                     break;
             }
         }

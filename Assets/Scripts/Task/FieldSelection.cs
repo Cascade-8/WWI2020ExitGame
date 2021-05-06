@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Task.Digit
+namespace Task
 {
     public class FieldSelection : MonoBehaviour
     {
     
         // Update is called once per frame
     
-        public int selector;
+        public int selector = -1;
         public InputField[] inputFields = new InputField[4];
         private bool _toggleButton;
 

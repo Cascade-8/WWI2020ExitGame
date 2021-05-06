@@ -12,6 +12,7 @@ namespace Task.Digit
         [Header("Areas")]
         public GameObject digitAreas;
         public GameObject inputAreas;
+        public GameObject world;
     
         [Header("Arrays")]
         public string[] digitStrings;
@@ -19,14 +20,27 @@ namespace Task.Digit
 
         [Header("Buttons")] 
         public Button submitButton;
-        
+
+        private GameHandler _gameHandler;
+
+
         private void OnEnable()
         {
+            _gameHandler = world.GetComponent<GameHandler>();
             submitButton.onClick.AddListener(HandleSubmitAction);
             digitStrings = new string[4];
             expectedChars = new char[4];
             CreateBinaryCode();
             transform.parent.Find("MinigameTitle").GetComponent<Text>().text = "Binärzahlenrätsel";
+        }
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                gameObject.SetActive(false);
+                _gameHandler.ToggleActiveArea();
+            }
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -66,12 +80,13 @@ namespace Task.Digit
 
         private void HandleSubmitAction()
         {
-            GameObject world = transform.parent.transform.parent.transform.parent.gameObject;
             if (CompareUserInput())
             {
                 gameObject.SetActive(false);
-                world.transform.Find("GameArea/Character").GetComponent<CharacterHandler>().SetTasks(1);
-                world.transform.Find("GameArea/Character").GetComponent<CharacterHandler>().SetScore(187);
+                var gameArea = world.transform.Find("GameArea");
+                gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
+                gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
+                gameArea.Find("TaskColliders/TaskCollider1").GetComponent<TaskColliderHandler>().clearTask();
                 world.GetComponent<GameHandler>().ToggleActiveArea();
                 
             }
@@ -87,6 +102,8 @@ namespace Task.Digit
                     return false;
                 }
             }
+            submitButton.onClick.RemoveListener(HandleSubmitAction);
+            Destroy(gameObject);
             return true;
         }
     }

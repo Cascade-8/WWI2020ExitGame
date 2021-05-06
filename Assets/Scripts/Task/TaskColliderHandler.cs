@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Task
@@ -26,15 +27,23 @@ namespace Task
         {
             _isActive = true;
             _parent.GetComponent<TaskNotificationHandler>().SelectTaskMessage(name);
-            _parent.gameObject.GetComponent<TaskNotificationHandler>().SetCanvasActive(true);
-            transform.Find(_isCleared? "ScreenG":"ScreenY").GetComponent<Renderer>().enabled = true;
+            _parent.GetComponent<TaskNotificationHandler>().SetCanvasActive(true);
+            transform.Find("ScreenY").GetComponent<Renderer>().enabled = !_isCleared;
+           
         }
+        
         private void OnTriggerExit2D(Collider2D coll)
         {
             _isActive = false;
             _parent.GetComponent<TaskNotificationHandler>().SetCanvasActive(false);
-            transform.Find("ScreenG").GetComponent<Renderer>().enabled = false;
             transform.Find("ScreenY").GetComponent<Renderer>().enabled = false;
+        }
+
+        public void clearTask()
+        {
+            transform.Find("ScreenG").GetComponent<Renderer>().enabled = true;
+            transform.GetComponent<BoxCollider2D>().enabled = false;
+            _isCleared = true;
         }
     }
 }

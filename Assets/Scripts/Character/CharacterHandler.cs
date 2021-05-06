@@ -16,7 +16,7 @@ namespace Character
         }
         public void SetScore(int s)
         {
-            _score = s;
+            _score += s;
         }
         public byte GETTasks()
         {
@@ -24,7 +24,7 @@ namespace Character
         }
         public void SetTasks(byte t)
         {
-            _completedTasks = t;
+            _completedTasks += t;
         }
     }
 }

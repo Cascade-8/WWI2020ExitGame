@@ -1,31 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using GameEngine;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class TaskExecutionHandler : MonoBehaviour
+namespace Task
 {
-    public GameObject world;
-    public void ExecuteTask(string task)
+    public class TaskExecutionHandler : MonoBehaviour
     {
-        switch (task)
+        public GameObject world;
+        
+        public void ExecuteTask(string task)
         {
-            case "TaskCollider1": world.GetComponent<GameHandler>().ToggleActiveArea();
-                    
-                break;
-            case "TaskCollider2":   world.GetComponent<GameHandler>().ToggleActiveArea();
-                                    world.transform.Find("TaskArea/TaskScenes/BinaryDigitTask").gameObject.SetActive(true);
-                break;
-            case "TaskCollider3": world.GetComponent<GameHandler>().ToggleActiveArea();
-                break;
-            case "TaskCollider4": world.GetComponent<GameHandler>().ToggleActiveArea();
-                break;
-            case "TaskCollider5": world.GetComponent<GameHandler>().ToggleActiveArea();
-                break;
-            case "TaskCollider6": world.GetComponent<GameHandler>().ToggleActiveArea();
-                break;
+            var gamehandler = world.GetComponent<GameHandler>();
+            var taskscene = world.transform.Find("TaskArea/TaskScenes");
+            gamehandler.ToggleActiveArea();
+            switch (task)
+            {
+                case "TaskCollider1": taskscene.Find("BinaryDigitTask").gameObject.SetActive(true);
+                    break;
+                case "TaskCollider2": taskscene.Find("SkeletonTask1").gameObject.SetActive(true);
+                    break;
+                case "TaskCollider3": taskscene.Find("SkeletonTask2").gameObject.SetActive(true);
+                    break;
+                case "TaskCollider4": taskscene.Find("IPAdress").gameObject.SetActive(true);
+                    break;
+                case "TaskCollider5": taskscene.Find("Website").gameObject.SetActive(true);
+                    break;
+                case "TaskCollider6": taskscene.Find("SkeletonTask3").gameObject.SetActive(true);
+                    break;
             
+            }
         }
     }
 }
