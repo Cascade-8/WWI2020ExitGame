@@ -53,9 +53,12 @@
      <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Digit\DigitTaskHandler.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMoving.cs" />
-     <Compile Include="Assets\Scripts\Task\Mastermind\RowHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Mastermind\Mastermind.cs" />
-     <Compile Include="Assets\Scripts\Task\Mastermind\dragHandling.cs" />
+     <Compile Include="Assets\Scripts\Task\Mastermind\DragHandling.cs" />
+     <Compile Include="Assets\Scripts\Task\Mastermind\RowCheck.cs" />
+     <Compile Include="Assets\Scripts\Task\Mastermind\LampAttributes.cs" />
+     <Compile Include="Assets\Scripts\Task\Mastermind\SolutionLampHandler.cs" />
+     <Compile Include="Assets\Scripts\Task\Arduino\ArduinoTaskHandler.cs" />
      <Reference Include="UnityEngine">
      <HintPath>G:/DevelopmentProjects/Unity/2021.1.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>

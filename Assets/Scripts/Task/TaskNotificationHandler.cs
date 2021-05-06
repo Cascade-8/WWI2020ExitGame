@@ -1,4 +1,6 @@
 ﻿using System;
+using Character;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +10,9 @@ namespace Task
     {
         [Header("InteractionCanvas")]
         public Canvas interactionCanvas;
+
+        public GameObject Door;
+        public GameObject Character;
         
         public void SelectTaskMessage(string coll)
         {
@@ -43,13 +48,25 @@ namespace Task
                 case "TaskCollider6":   title.GetComponent<Text>().text = "Präsentationsschicht".ToUpper();
                                         message.GetComponent<Text>().text = "\nTBD\nPlease execute the following task!".ToUpper();
                     break;
-                case "Door":            title.GetComponent<Text>().text = "Türe öffnen".ToUpper();
-                                        message.GetComponent<Text>().text = "\nSchließe erst alle Herausforderungen ab!\n".ToUpper();
-                                    interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(false);
+                case "Door":
+                    if (Character.GetComponent<CharacterHandler>().GETTasks() != 1) 
+                    {
+                        title.GetComponent<Text>().text = "Türe öffnen".ToUpper();
+                        message.GetComponent<Text>().text = "\nSchließe erst alle Herausforderungen ab!\n".ToUpper();
+                        interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        title.GetComponent<Text>().text = "Türe öffnen".ToUpper();
+                        message.GetComponent<Text>().text = "\nGehe hindurch!\n".ToUpper();
+                        Door.GetComponent<Animator>().SetBool("IsOpenTriggered", true);
+                        interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(false);
+                    }
                     break;
                 default:                title.GetComponent<Text>().text = "".ToUpper();
                                         message.GetComponent<Text>().text = "".ToUpper();
-                                    interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(false); 
+                                        interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(false);
+                                        interactionCanvas.enabled = false;
                     break;
             }
         }

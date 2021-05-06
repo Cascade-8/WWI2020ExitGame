@@ -80,6 +80,7 @@ namespace Task.Digit
 
         private void HandleSubmitAction()
         {
+            print("Klick");
             if (CompareUserInput())
             {
                 gameObject.SetActive(false);

@@ -14,9 +14,9 @@ namespace Task
             gamehandler.ToggleActiveArea();
             switch (task)
             {
-                case "TaskCollider1": taskscene.Find("BinaryDigitTask").gameObject.SetActive(true);
+                case "TaskCollider1": taskscene.Find("BinaryDigit").gameObject.SetActive(true);
                     break;
-                case "TaskCollider2": taskscene.Find("SkeletonTask1").gameObject.SetActive(true);
+                case "TaskCollider2": taskscene.Find("Arduino").gameObject.SetActive(true);
                     break;
                 case "TaskCollider3": taskscene.Find("Mastermind").gameObject.SetActive(true);
                     break;
@@ -25,6 +25,8 @@ namespace Task
                 case "TaskCollider5": taskscene.Find("Website").gameObject.SetActive(true);
                     break;
                 case "TaskCollider6": taskscene.Find("SkeletonTask3").gameObject.SetActive(true);
+                    break;
+                case "Door": 
                     break;
             
             }
