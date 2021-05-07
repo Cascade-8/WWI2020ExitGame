@@ -7,6 +7,7 @@ namespace Task
     {
         public GameObject world;
         
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Changes the task to the Active Collider name <param name="task"></param></summary>
          */

@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LampAttributes : MonoBehaviour
+namespace Task.Mastermind
 {
-    public int colorID;
-    public string colorName = "";
+    public class LampAttributes : MonoBehaviour
+    {
+        public int colorID;
+        public string colorName = "";
+    }
 }

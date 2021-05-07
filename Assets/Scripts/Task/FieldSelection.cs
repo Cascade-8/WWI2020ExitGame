@@ -6,12 +6,12 @@ namespace Task
     public class FieldSelection : MonoBehaviour
     {
     
-        // Update is called once per frame
+        
     
         public int selector = -1;
         public InputField[] inputFields = new InputField[4];
         private bool _toggleButton;
-
+        // Update is called once per frame
         void Update()
         {
             if (Input.GetKey(KeyCode.Tab) && !_toggleButton)

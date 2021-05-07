@@ -22,8 +22,7 @@ namespace Task.Digit
         public Button submitButton;
 
         private GameHandler _gameHandler;
-
-
+        
         private void OnEnable()
         {
             _gameHandler = world.GetComponent<GameHandler>();
@@ -33,7 +32,7 @@ namespace Task.Digit
             CreateBinaryCode();
             transform.parent.Find("MinigameTitle").GetComponent<Text>().text = "Binärzahlenrätsel";
         }
-
+        // Update is called once per frame
         private void Update()
         {
             if (Input.GetKey(KeyCode.Escape))
@@ -42,7 +41,6 @@ namespace Task.Digit
                 _gameHandler.ToggleActiveArea();
             }
         }
-
         /**
          * <summary>Creates 4 Binary Codes based on the Decimal ASCII Values of the Upper Case Letters</summary>
          */

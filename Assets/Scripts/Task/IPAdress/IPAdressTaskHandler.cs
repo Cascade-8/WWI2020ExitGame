@@ -23,6 +23,7 @@ namespace Task.IPAdress
             submitButton.onClick.AddListener(HandleSubmitAction);
             transform.parent.Find("MinigameTitle").GetComponent<Text>().text = "IP-Adressrätsel";
         }
+        // Update is called once per frame
         private void Update()
         {
             if (Input.GetKey(KeyCode.Escape))
@@ -59,7 +60,7 @@ namespace Task.IPAdress
                 }
             }
             submitButton.onClick.RemoveListener(HandleSubmitAction);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return true;
         }
     }

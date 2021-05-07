@@ -33,13 +33,15 @@ namespace Task.Mastermind
         {
             if (IsFull() && !_wasChecked)
             {
-                _expectedSolution = master.GetComponent<global::Task.Mastermind.Mastermind>().expectedValue;
+                // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+                _expectedSolution = master.GetComponent<Mastermind>().expectedValue;
                 _wasChecked = true;
                 CheckColors();
                 DrawSolutionSocket();
                 if (_correctPosition == 4)
                 {
-                    master.GetComponent<global::Task.Mastermind.Mastermind>().HandleCompletion();
+                    // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+                    master.GetComponent<Mastermind>().HandleCompletion();
                 }
                 else
                 {
@@ -85,7 +87,9 @@ namespace Task.Mastermind
             CountCorrectColors();
             CountCorrectPositions();
         }
-
+        /**
+         * <summary>Checks how many Colors are chosen correctly</summary>
+         */
         private void CountCorrectColors()
         {
             int[] hitPositions = {-1,-1,-1,-1};
@@ -104,6 +108,9 @@ namespace Task.Mastermind
                 }
             }
         }
+        /**
+         * <summary>Checks how many Colors are at the correct position</summary>
+         */
         private void CountCorrectPositions()
         {
             for (int i = 0; i < transform.childCount - 1; i++)
@@ -126,6 +133,7 @@ namespace Task.Mastermind
             }
             return false;
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Displays the correct Sprites for the amounts of <c>_correctPosition</c> and <c>_correctColors</c></summary>
          */

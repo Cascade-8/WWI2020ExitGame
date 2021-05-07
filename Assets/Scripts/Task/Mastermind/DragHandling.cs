@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Task.Mastermind
 {
@@ -35,8 +33,8 @@ namespace Task.Mastermind
             }
             else
             {
-                GameObject g = Instantiate(transform.gameObject);
-                g.transform.SetParent(transform.parent);
+                var transform1 = transform;
+                GameObject g = Instantiate(transform1.gameObject, transform1.parent, true);
                 g.transform.position = _startposition;
                 g.transform.localScale = new Vector3(50, 50, 0);
                 g.transform.name = transform.name;
@@ -45,7 +43,6 @@ namespace Task.Mastermind
                 _hitCollider.GetComponent<Collider2D>().enabled = false;
                 transform.SetParent(_hitCollider.transform);
             }
-            
         }
         private void OnCollisionStay2D(Collision2D other)
         {
