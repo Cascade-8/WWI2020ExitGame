@@ -28,6 +28,7 @@ namespace Task.Mastermind
                 _gameHandler.ToggleActiveArea();
             }
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Method that handles the Completion of the Task</summary>
          */

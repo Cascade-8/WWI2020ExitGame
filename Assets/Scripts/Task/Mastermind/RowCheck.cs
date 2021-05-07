@@ -11,8 +11,8 @@ namespace Task.Mastermind
         public Sprite white;
         
         private int[] _expectedSolution = new int[4];
-        public int _correctColors = 0;
-        public int _correctPosition = 0;
+        private int _correctColors = 0;
+        private int _correctPosition = 0;
         private bool _wasChecked;
         
         void OnEnable()

@@ -7,8 +7,8 @@ namespace Task
     {
         private bool _isActive;
         private GameObject _parent;
-        public bool _isCleared;
-        public GameObject Character;
+        private bool _isCleared;
+        public GameObject character;
         private static readonly int IsOpenTriggered = Animator.StringToHash("IsOpenTriggered");
 
         // Start is called before the first frame update
@@ -22,6 +22,7 @@ namespace Task
         {
             if (Input.GetKey(KeyCode.Space) && _isActive && name != "Door")
             {
+                // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
                 _parent.gameObject.GetComponent<TaskExecutionHandler>().ExecuteTask(name);
             }
         }
@@ -35,7 +36,7 @@ namespace Task
                 transform.Find("ScreenY").GetComponent<Renderer>().enabled = !_isCleared;
             }
             else {
-                Character.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                character.GetComponent<SpriteRenderer>().sortingOrder = 0;
             }
         }
         private void OnTriggerExit2D(Collider2D coll)
@@ -49,7 +50,7 @@ namespace Task
             }
             else if (name == "DoorAreaAbove")
             {
-                Character.GetComponent<SpriteRenderer>().sortingOrder = 5;
+                character.GetComponent<SpriteRenderer>().sortingOrder = 5;
             }
             else
             {

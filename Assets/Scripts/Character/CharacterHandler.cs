@@ -1,6 +1,3 @@
-using GameEngine;
-using Task;
-using Task.Digit;
 using UnityEngine;
 
 namespace Character
