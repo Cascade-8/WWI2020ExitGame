@@ -29,6 +29,9 @@ namespace Task.Website
                 _gameHandler.ToggleActiveArea();
             }
         }
+        /**
+         * <summary>Handles the Action when the Submit Button is pressed</summary>
+         */
         private void HandleSubmitAction()
         {
             if (CompareUserInput())
@@ -38,10 +41,13 @@ namespace Task.Website
                 var gameArea = world.transform.Find("GameArea");
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
-                gameArea.Find("TaskColliders/TaskCollider5").GetComponent<TaskColliderHandler>().clearTask();
+                gameArea.Find("TaskColliders/TaskCollider5").GetComponent<TaskColliderHandler>().ClearTask();
                 world.GetComponent<GameHandler>().ToggleActiveArea();
             }
         }
+        /**
+         * <summary>Compares the User input to the expected Solution</summary>
+         */
         private bool CompareUserInput()
         {
             if (ExpectedString != inputField.transform.GetChild(1).GetComponent<Text>().text)

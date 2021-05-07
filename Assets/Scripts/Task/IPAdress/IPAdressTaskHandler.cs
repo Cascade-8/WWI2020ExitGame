@@ -31,6 +31,9 @@ namespace Task.IPAdress
                 _gameHandler.ToggleActiveArea();
             }
         }
+        /**
+         * <summary>Handles the Action when the Submit Button is pressed</summary>
+         */
         private void HandleSubmitAction()
         {
             if (CompareUserInput())
@@ -39,10 +42,13 @@ namespace Task.IPAdress
                 var gameArea = world.transform.Find("GameArea");
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
-                gameArea.Find("TaskColliders/TaskCollider4").GetComponent<TaskColliderHandler>().clearTask();
+                gameArea.Find("TaskColliders/TaskCollider4").GetComponent<TaskColliderHandler>().ClearTask();
                 _gameHandler.ToggleActiveArea();
             }
         }
+        /**
+         * <summary>Compares the User input to the expected Solution</summary>
+         */
         private bool CompareUserInput()
         {
             int i = 0;

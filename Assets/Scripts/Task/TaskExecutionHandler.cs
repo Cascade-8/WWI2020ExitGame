@@ -7,6 +7,9 @@ namespace Task
     {
         public GameObject world;
         
+        /**
+         * <summary>Changes the task to the Active Collider name <param name="task"></param></summary>
+         */
         public void ExecuteTask(string task)
         {
             var gamehandler = world.GetComponent<GameHandler>();

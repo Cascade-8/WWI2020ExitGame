@@ -8,7 +8,7 @@ namespace Task.Mastermind
     public class DragHandling : MonoBehaviour
     {
         private bool _isSnapped = false;
-        public Vector3 _startposition;
+        private Vector3 _startposition;
         private Collider2D _hitCollider;
         public void OnMouseDown()
         {
@@ -19,8 +19,11 @@ namespace Task.Mastermind
         {
             if (!_isSnapped)
             {
-                var mouseInWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                transform.position = new Vector2(mouseInWorld.x, mouseInWorld.y);
+                if (Camera.main is { })
+                {
+                    var mouseInWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    transform.position = new Vector2(mouseInWorld.x, mouseInWorld.y);
+                }
             }
         }
         public void OnMouseUp()
@@ -37,10 +40,9 @@ namespace Task.Mastermind
                 g.transform.position = _startposition;
                 g.transform.localScale = new Vector3(50, 50, 0);
                 g.transform.name = transform.name;
-                Destroy(transform.GetComponent<Collider2D>());
-                Destroy(transform.GetComponent<Rigidbody2D>());
-                Destroy(transform.GetComponent<DragHandling>());
-                Destroy(_hitCollider.GetComponent<Collider2D>());
+                transform.GetComponent<Collider2D>().enabled = false;
+                transform.GetComponent<DragHandling>().enabled = false;
+                _hitCollider.GetComponent<Collider2D>().enabled = false;
                 transform.SetParent(_hitCollider.transform);
             }
             

@@ -14,6 +14,9 @@ namespace Task
         public GameObject Door;
         public GameObject Character;
         
+        /**
+         * <<summary>Selects the Expected Task Message that has to be shown, based on the name of the <param name="coll"></param></summary>
+         */
         public void SelectTaskMessage(string coll)
         {
             interactionCanvas.enabled = true;

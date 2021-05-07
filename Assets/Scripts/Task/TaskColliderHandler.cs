@@ -9,7 +9,8 @@ namespace Task
         private GameObject _parent;
         public bool _isCleared;
         public GameObject Character;
-        
+        private static readonly int IsOpenTriggered = Animator.StringToHash("IsOpenTriggered");
+
         // Start is called before the first frame update
         void Start()
         {
@@ -43,7 +44,7 @@ namespace Task
             _parent.GetComponent<TaskNotificationHandler>().SetCanvasActive(false);
             if (name == "Door")
             {
-                GetComponent<Animator>().SetBool("IsOpenTriggered", false);
+                GetComponent<Animator>().SetBool(IsOpenTriggered, false);
                 transform.Find("ScreenY").GetComponent<Renderer>().enabled = false;
             }
             else if (name == "DoorAreaAbove")
@@ -55,7 +56,10 @@ namespace Task
                 transform.Find("ScreenY").GetComponent<Renderer>().enabled = false;
             }
         }
-        public void clearTask()
+        /**
+         * <summary>Disables the current Task</summary>
+         */
+        public void ClearTask()
         {
             transform.Find("ScreenG").GetComponent<Renderer>().enabled = true;
             transform.GetComponent<BoxCollider2D>().enabled = false;

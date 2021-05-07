@@ -38,7 +38,7 @@ namespace Task.Arduino
                 var gameArea = world.transform.Find("GameArea");
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
-                gameArea.Find("TaskColliders/TaskCollider2").GetComponent<TaskColliderHandler>().clearTask();
+                gameArea.Find("TaskColliders/TaskCollider2").GetComponent<TaskColliderHandler>().ClearTask();
                 world.GetComponent<GameHandler>().ToggleActiveArea();
             }
         }

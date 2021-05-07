@@ -1,57 +1,70 @@
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 namespace Task.Mastermind
 {
     public class RowCheck : MonoBehaviour
     {
-
-        public bool _isFull = false;
-        public bool isCorrect = false;
+        
         public GameObject master;
-        public int[] expectedSolution = new int[4];
-        public int correctColors = 0;
-        public int correctPosition = 0;
+        [Header("Sprites")]
         public Sprite black;
         public Sprite white;
-
-        private bool _wasChecked = false;
-        // Start is called before the first frame update
-        void Start()
+        
+        private int[] _expectedSolution = new int[4];
+        public int _correctColors = 0;
+        public int _correctPosition = 0;
+        private bool _wasChecked;
+        
+        void OnEnable()
         {
-            expectedSolution = master.GetComponent<global::Mastermind>().expectedValue;
-            drawSolutionSocket();
+            _correctColors = 0;
+            _correctPosition = 0;
+            _wasChecked = false;
+            _expectedSolution = master.GetComponent<global::Task.Mastermind.Mastermind>().expectedValue;
+            for (int i = 0; i < transform.childCount-1; i++)
+            {
+                transform.GetChild(i).GetComponent<Collider2D>().enabled = true;
+            }
+            DrawSolutionSocket();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (isFull() && !_wasChecked)
+            if (IsFull() && !_wasChecked)
             {
+                _expectedSolution = master.GetComponent<global::Task.Mastermind.Mastermind>().expectedValue;
                 _wasChecked = true;
-                checkColors();
-                drawSolutionSocket();
-                if (correctPosition == 4)
+                CheckColors();
+                DrawSolutionSocket();
+                if (_correctPosition == 4)
                 {
-                    master.GetComponent<global::Mastermind>().handleCompletion();
+                    master.GetComponent<global::Task.Mastermind.Mastermind>().HandleCompletion();
                 }
                 else
                 {
-                    for (int i = 0; i < transform.parent.childCount; i++)
-                    {
-                        if (!transform.parent.GetChild(i).gameObject.activeSelf)
-                        {
-                            transform.parent.GetChild(i).gameObject.SetActive(true);
-                            break;
-                        }
-                    }
+                    DisplayNextRow();
                 }
-                
             }
-            
         }
-        bool isFull()
+        /**
+         * <summary>Detects the next inactive Row to set it Active</summary>
+         */
+        public void DisplayNextRow()
+        {
+            for (int i = 0; i < transform.parent.childCount; i++)
+            {
+                if (!transform.parent.GetChild(i).gameObject.activeSelf)
+                {
+                    transform.parent.GetChild(i).gameObject.SetActive(true);
+                    break;
+                }
+            }
+        }
+        /**
+         * <summary>Checks if every Spot in the Row is filled</summary>
+         */
+        private bool IsFull()
         {
             bool b = true;
             for (int i = 0; i < transform.childCount-1; i++)
@@ -63,45 +76,63 @@ namespace Task.Mastermind
             }
             return b;
         }
-        void checkColors() {
+        // ReSharper disable Unity.PerformanceAnalysis
+        /**
+         * <summary>Calls the 2 methods to check Position and colors</summary>
+         */
+        private void CheckColors()
+        {
+            CountCorrectColors();
+            CountCorrectPositions();
+        }
+
+        private void CountCorrectColors()
+        {
             int[] hitPositions = {-1,-1,-1,-1};
+            
             for (int i = 0; i < transform.childCount-1; i++) 
             {
                 int colorID = transform.GetChild(i).transform.GetChild(0).GetComponent<LampAttributes>().colorID;
-                string colorName = transform.GetChild(i).transform.GetChild(0).GetComponent<LampAttributes>().colorName;
-                for (int j = 0; j < expectedSolution.Length; j++)
+                for (int j = 0; j < _expectedSolution.Length; j++)
                 {
-                    Debug.Log("Comparing ColorID:"+colorID+" with Solution:"+expectedSolution[j]+" at i: "+i+" and j:"+j+" where alreadyCounted is:"+alreadyCounted(hitPositions,j));
-                    if (colorID == expectedSolution[j] && !alreadyCounted(hitPositions,j))
+                    if (colorID == _expectedSolution[j] && !alreadyCounted(hitPositions,j))
                     {
                         hitPositions[i] = j;
-                        Debug.Log("Found Hit:"+colorID+" --> "+colorName);
-                        correctColors++;
-                        if (i == j)
-                        {
-                            correctPosition++;
-                        }
+                        _correctColors++;
                         break;
                     }
                 }
             }
         }
-        bool alreadyCounted(int[] hP, int pos)
+        private void CountCorrectPositions()
+        {
+            for (int i = 0; i < transform.childCount - 1; i++)
+            {
+                int colorID = transform.GetChild(i).transform.GetChild(0).GetComponent<LampAttributes>().colorID;
+                if (colorID == _expectedSolution[i])
+                {
+                    _correctPosition++;
+                }
+            }
+        }
+        /**
+         * <summary>Checks if a Lamp has already been counted, so it won't count it multiple Times</summary>
+         */
+        private bool alreadyCounted(int[] hP, int pos)
         {
             foreach (int n in hP)
             {
-                if (n == pos)
-                {
-                    return true;
-                }
+                if (n == pos) return true;
             }
-
             return false;
         }
-        void drawSolutionSocket()
+        /**
+         * <summary>Displays the correct Sprites for the amounts of <c>_correctPosition</c> and <c>_correctColors</c></summary>
+         */
+        private void DrawSolutionSocket()
         {
-            int corPos = correctPosition;
-            int corCol = correctColors;
+            int corPos = _correctPosition;
+            int corCol = _correctColors;
             for (int i = 0; i < 4; i++)
             {
                 SpriteRenderer sR = transform.Find("SolutionSocket").GetChild(i).GetComponent<SpriteRenderer>();
@@ -112,7 +143,7 @@ namespace Task.Mastermind
                     corPos--;
                     corCol--;
                 }
-                else if(corPos == 0 && corCol != 0)
+                else if(corCol != 0)
                 {
                     sR.enabled = true;
                     sR.sprite = white;
@@ -122,7 +153,6 @@ namespace Task.Mastermind
                 {
                     sR.enabled = false;
                 }
-                
             }
         }
     }

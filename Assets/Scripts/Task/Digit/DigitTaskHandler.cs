@@ -43,7 +43,9 @@ namespace Task.Digit
             }
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
+        /**
+         * <summary>Creates 4 Binary Codes based on the Decimal ASCII Values of the Upper Case Letters</summary>
+         */
         private void CreateBinaryCode()
         {
             Random random = new Random();
@@ -56,6 +58,9 @@ namespace Task.Digit
 
             FormatDigits();
         }
+        /**
+         * <summary>Adding spaces between the numbers for aesthetic purposes</summary>
+         */
         private void FormatDigits()
         {
             for (int i = 0; i < 4; i++)
@@ -70,6 +75,9 @@ namespace Task.Digit
             
             LoadStringsToArea();
         }
+        /**
+         * <summary>Displays the Strings into the Textobject</summary>
+         */
         private void LoadStringsToArea()
         {
             for (int i = 0; i < 4; i++)
@@ -77,7 +85,9 @@ namespace Task.Digit
                 digitAreas.transform.GetChild(i).GetComponent<Text>().text = digitStrings[i];
             }
         }
-
+        /**
+         * <summary>Handles the Action when the Submit Button is pressed</summary>
+         */
         private void HandleSubmitAction()
         {
             print("Klick");
@@ -87,12 +97,14 @@ namespace Task.Digit
                 var gameArea = world.transform.Find("GameArea");
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
-                gameArea.Find("TaskColliders/TaskCollider1").GetComponent<TaskColliderHandler>().clearTask();
+                gameArea.Find("TaskColliders/TaskCollider1").GetComponent<TaskColliderHandler>().ClearTask();
                 world.GetComponent<GameHandler>().ToggleActiveArea();
                 
             }
         }
-
+        /**
+         * <summary>Compares the User input to the expected Solution</summary>
+         */
         private bool CompareUserInput()
         {
             int i = 0;
