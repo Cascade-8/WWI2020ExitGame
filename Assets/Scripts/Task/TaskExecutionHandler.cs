@@ -28,7 +28,7 @@ namespace Task
                     break;
                 case "TaskCollider5": taskscene.Find("Website").gameObject.SetActive(true);
                     break;
-                case "TaskCollider6": taskscene.Find("SkeletonTask3").gameObject.SetActive(true);
+                case "TaskCollider6": taskscene.Find("Minecraft").gameObject.SetActive(true);
                     break;
                 case "Door": 
                     break;

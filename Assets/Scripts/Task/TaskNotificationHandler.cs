@@ -52,7 +52,7 @@ namespace Task
                                         message.GetComponent<Text>().text = "\nTBD\nPlease execute the following task!".ToUpper();
                     break;
                 case "Door":
-                    if (Character.GetComponent<CharacterHandler>().GETTasks() != 1) 
+                    if (Character.GetComponent<CharacterHandler>().GETTasks() != 6) 
                     {
                         title.GetComponent<Text>().text = "Türe öffnen".ToUpper();
                         message.GetComponent<Text>().text = "\nSchließe erst alle Herausforderungen ab!\n".ToUpper();

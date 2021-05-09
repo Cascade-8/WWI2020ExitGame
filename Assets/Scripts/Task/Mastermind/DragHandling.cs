@@ -8,12 +8,12 @@ namespace Task.Mastermind
         private bool _isSnapped = false;
         private Vector3 _startposition;
         private Collider2D _hitCollider;
-        public void OnMouseDown()
+        private void OnMouseDown()
         {
             _startposition = transform.position;
             transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
-        public void OnMouseDrag()
+        private void OnMouseDrag()
         {
             if (!_isSnapped)
             {
@@ -24,7 +24,7 @@ namespace Task.Mastermind
                 }
             }
         }
-        public void OnMouseUp()
+        private void OnMouseUp()
         {
             if (!_isSnapped)
             {
