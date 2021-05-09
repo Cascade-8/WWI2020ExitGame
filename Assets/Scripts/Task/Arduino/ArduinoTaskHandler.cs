@@ -1,3 +1,4 @@
+using System;
 using Character;
 using GameEngine;
 using UnityEngine;
@@ -71,6 +72,7 @@ namespace Task.Arduino
                 7 => "JUSTUS",
                 8 => "AURELIUS",
                 9 => "BIMAZUBUTE",
+                _ => "PARMESAN"
             };
         }
     }

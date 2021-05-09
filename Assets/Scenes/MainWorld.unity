@@ -3918,8 +3918,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: "Verbinde dich auf den Minecraft Server unter: \nGebe den erhaltenen Code
-    ein:"
+  m_Text: 'Verbinde dich auf den Minecraft Server unter:  5.83.169.23:13600
+
+
+    Gebe
+    den erhaltenen Code ein:'
 --- !u!222 &524286973
 CanvasRenderer:
   m_ObjectHideFlags: 0
