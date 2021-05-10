@@ -21,32 +21,29 @@ namespace Task.Mastermind
             _correctPosition = 0;
             _wasChecked = false;
             _expectedSolution = master.GetComponent<Mastermind>().expectedValue;
-            for (int i = 0; i < transform.childCount-1; i++)
+            for (var i = 0; i < transform.childCount-1; i++)
             {
                 transform.GetChild(i).GetComponent<Collider2D>().enabled = true;
             }
             DrawSolutionSocket();
         }
-
         // Update is called once per frame
         private void Update()
         {
-            if (IsFull() && !_wasChecked)
+            if (!IsFull() || _wasChecked) return;
+            // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
+            _expectedSolution = master.GetComponent<Mastermind>().expectedValue;
+            _wasChecked = true;
+            CheckColors();
+            DrawSolutionSocket();
+            if (_correctPosition == 4)
             {
                 // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
-                _expectedSolution = master.GetComponent<Mastermind>().expectedValue;
-                _wasChecked = true;
-                CheckColors();
-                DrawSolutionSocket();
-                if (_correctPosition == 4)
-                {
-                    // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
-                    master.GetComponent<Mastermind>().HandleCompletion();
-                }
-                else
-                {
-                    DisplayNextRow();
-                }
+                master.GetComponent<Mastermind>().HandleCompletion();
+            }
+            else
+            {
+                DisplayNextRow();
             }
         }
         // ReSharper disable Unity.PerformanceAnalysis
@@ -55,20 +52,21 @@ namespace Task.Mastermind
          */
         public void DisplayNextRow()
         {
-            bool lastRow = true;
-            for (var i = 0; i < transform.parent.childCount; i++)
+            while (true)
             {
-                if (!transform.parent.GetChild(i).gameObject.activeSelf)
+                var lastRow = true;
+                for (var i = 0; i < transform.parent.childCount; i++)
                 {
-                    lastRow = false;
-                    transform.parent.GetChild(i).gameObject.SetActive(true);
-                    break;
+                    if (!transform.parent.GetChild(i).gameObject.activeSelf)
+                    {
+                        lastRow = false;
+                        transform.parent.GetChild(i).gameObject.SetActive(true);
+                        break;
+                    }
                 }
-            }
-            if (lastRow)
-            {
+
+                if (!lastRow) return;
                 master.GetComponent<Mastermind>().CleanBoard();
-                DisplayNextRow();
             }
         }
         /**
@@ -76,7 +74,7 @@ namespace Task.Mastermind
          */
         private bool IsFull()
         {
-            bool b = true;
+            var b = true;
             for (var i = 0; i < transform.childCount-1; i++)
             {
                 if (transform.GetChild(i).transform.childCount < 1)
@@ -135,8 +133,8 @@ namespace Task.Mastermind
          */
         private void DrawSolutionSocket()
         {
-            int corPos = _correctPosition;
-            int corCol = _correctColors;
+            var corPos = _correctPosition;
+            var corCol = _correctColors;
             for (int i = 0; i < 4; i++)
             {
                 var sR = transform.Find("SolutionSocket").GetChild(i).GetComponent<SpriteRenderer>();

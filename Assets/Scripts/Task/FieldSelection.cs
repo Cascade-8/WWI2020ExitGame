@@ -12,7 +12,7 @@ namespace Task
         public InputField[] inputFields = new InputField[4];
         private bool _toggleButton;
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.GetKey(KeyCode.Tab) && !_toggleButton)
             {

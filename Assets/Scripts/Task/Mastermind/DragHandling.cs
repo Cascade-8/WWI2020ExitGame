@@ -15,14 +15,10 @@ namespace Task.Mastermind
         }
         private void OnMouseDrag()
         {
-            if (!_isSnapped)
-            {
-                if (Camera.main is { })
-                {
-                    var mouseInWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    transform.position = new Vector2(mouseInWorld.x, mouseInWorld.y);
-                }
-            }
+            if (_isSnapped) return;
+            if (Camera.main is null) return;
+            var mouseInWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = new Vector2(mouseInWorld.x, mouseInWorld.y);
         }
         private void OnMouseUp()
         {
@@ -46,12 +42,10 @@ namespace Task.Mastermind
         }
         private void OnCollisionStay2D(Collision2D other)
         {
-            if (other.transform.parent.name != "Lamps")
-            {
-                _hitCollider = other.collider;
-                _isSnapped = true;
-                transform.position = other.transform.position;
-            }
+            if (other.transform.parent.name == "Lamps") return;
+            _hitCollider = other.collider;
+            _isSnapped = true;
+            transform.position = other.transform.position;
         }
     }
 }

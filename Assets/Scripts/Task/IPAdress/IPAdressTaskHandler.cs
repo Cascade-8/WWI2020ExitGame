@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Character;
 using GameEngine;
 using UnityEngine;
@@ -17,7 +18,8 @@ namespace Task.IPAdress
     
         private readonly byte[] _expectedValues = {141,031,111,222};
         private GameHandler _gameHandler;
-        void OnEnable()
+
+        private void OnEnable()
         {
             _gameHandler = world.GetComponent<GameHandler>();
             submitButton.onClick.AddListener(HandleSubmitAction);
@@ -26,12 +28,10 @@ namespace Task.IPAdress
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                gameObject.SetActive(false);
-                submitButton.onClick.RemoveListener(HandleSubmitAction);
-                _gameHandler.ToggleActiveArea();
-            }
+            if (!Input.GetKey(KeyCode.Escape)) return;
+            gameObject.SetActive(false);
+            submitButton.onClick.RemoveListener(HandleSubmitAction);
+            _gameHandler.ToggleActiveArea();
         }
         // ReSharper disable Unity.PerformanceAnalysis
         /**
@@ -59,12 +59,10 @@ namespace Task.IPAdress
          */
         private bool CompareUserInput()
         {
-            int i = 0;
-            foreach(byte b in _expectedValues)
+            var i = 0;
+            if (_expectedValues.Any(b => b != byte.Parse(inputAreas.transform.GetChild(i++).GetChild(1).GetComponent<Text>().text)))
             {
-                if (b != Byte.Parse(inputAreas.transform.GetChild(i++).GetChild(1).GetComponent<Text>().text)) {
-                    return false;
-                }
+                return false;
             }
             submitButton.onClick.RemoveListener(HandleSubmitAction);
             Destroy(gameObject);

@@ -16,13 +16,13 @@ namespace Task
         private bool _isCleared;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             _parent = transform.parent.gameObject;
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (Input.GetKey(KeyCode.Space) && _isActive && name != "Door")
             {
@@ -49,19 +49,18 @@ namespace Task
         {
             _isActive = false;
             _parent.GetComponent<TaskNotificationHandler>().SetCanvasActive(false);
-            if (name == "Door")
+            switch (name)
             {
-                GetComponent<Animator>().SetBool(IsOpenTriggered, false);
-                transform.Find("ScreenY").GetComponent<Renderer>().enabled = false;
-            }
-            else if (name == "DoorAreaAbove")
-            {
-                character.GetComponent<SpriteRenderer>().sortingOrder = 5;
-               
-            }
-            else
-            {
-                transform.Find("ScreenY").GetComponent<Renderer>().enabled = false;
+                case "Door":
+                    GetComponent<Animator>().SetBool(IsOpenTriggered, false);
+                    transform.Find("ScreenY").GetComponent<Renderer>().enabled = false;
+                    break;
+                case "DoorAreaAbove":
+                    character.GetComponent<SpriteRenderer>().sortingOrder = 5;
+                    break;
+                default:
+                    transform.Find("ScreenY").GetComponent<Renderer>().enabled = false;
+                    break;
             }
         }
         // ReSharper disable Unity.PerformanceAnalysis

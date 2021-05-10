@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Character;
 using GameEngine;
 using UnityEngine;
@@ -35,19 +36,17 @@ namespace Task.Digit
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                gameObject.SetActive(false);
-                submitButton.onClick.RemoveListener(HandleSubmitAction);
-                _gameHandler.ToggleActiveArea();
-            }
+            if (!Input.GetKey(KeyCode.Escape)) return;
+            gameObject.SetActive(false);
+            submitButton.onClick.RemoveListener(HandleSubmitAction);
+            _gameHandler.ToggleActiveArea();
         }
         /**
          * <summary>Creates 4 Binary Codes based on the Decimal ASCII Values of the Upper Case Letters</summary>
          */
         private void CreateBinaryCode()
         {
-            Random random = new Random();
+            var random = new Random();
             for (int i = 0; i < 4; i++)
             {
                 int randomValue = random.Next(65, 90);
@@ -62,11 +61,11 @@ namespace Task.Digit
          */
         private void FormatDigits()
         {
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
-                char[] temp = digitStrings[i].ToCharArray();
+                var temp = digitStrings[i].ToCharArray();
                 digitStrings[i] = temp[0]+"";
-                for (int j = 1; j < 7; j++)
+                for (var j = 1; j < 7; j++)
                 {
                     digitStrings[i] = digitStrings[i] + "  " + temp[j];
                 }
@@ -79,11 +78,12 @@ namespace Task.Digit
          */
         private void LoadStringsToArea()
         {
-            for (int i = 0; i < 4; i++)
+            for (var i = 0; i < 4; i++)
             {
                 digitAreas.transform.GetChild(i).GetComponent<Text>().text = digitStrings[i];
             }
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Handles the Action when the Submit Button is pressed</summary>
          */
@@ -99,7 +99,6 @@ namespace Task.Digit
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
                 gameArea.Find("TaskColliders/TaskCollider1").GetComponent<TaskColliderHandler>().ClearTask();
                 world.GetComponent<GameHandler>().ToggleActiveArea();
-                
             }
             else
             {
@@ -111,15 +110,8 @@ namespace Task.Digit
          */
         private bool CompareUserInput()
         {
-            int i = 0;
-            foreach(char c in expectedChars)
-            {
-                if (c+"" != inputAreas.transform.GetChild(i++).GetChild(1).GetComponent<Text>().text.ToUpper())
-                {
-                    return false;
-                }
-            }
-            return true;
+            var i = 0;
+            return expectedChars.All(c => c + "" == inputAreas.transform.GetChild(i++).GetChild(1).GetComponent<Text>().text.ToUpper());
         }
     }
 }

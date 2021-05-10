@@ -10,6 +10,9 @@ namespace Character
 
         private void Update()
         {
+            /*  
+            *   Cheats
+            */
             if (Input.GetKey(KeyCode.F1))
             {
                 _completedTasks = 6;

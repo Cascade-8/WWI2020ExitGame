@@ -43,25 +43,25 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Task\Mastermind\Mastermind.cs" />
      <Compile Include="Assets\Scripts\Task\Minecraft\MinecraftHandler.cs" />
+     <Compile Include="Assets\Scripts\GameEngine\OutroHandler.cs" />
      <Compile Include="Assets\Scripts\Task\FieldSelection.cs" />
      <Compile Include="Assets\Scripts\GameEngine\GameHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Website\WebsiteTaskHandler.cs" />
+     <Compile Include="Assets\Scripts\Task\ButtonHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Mastermind\RowCheck.cs" />
      <Compile Include="Assets\Scripts\Task\TaskExecutionHandler.cs" />
      <Compile Include="Assets\Scripts\GameEngine\OverlayHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Mastermind\DragHandling.cs" />
      <Compile Include="Assets\Scripts\Task\Mastermind\LampAttributes.cs" />
-     <Compile Include="Assets\Scripts\Task\TaskAreaHandler.cs" />
      <Compile Include="Assets\Scripts\Task\TaskNotificationHandler.cs" />
      <Compile Include="Assets\Scripts\Task\IPAdress\IPAdressTaskHandler.cs" />
      <Compile Include="Assets\Scripts\Task\TaskColliderHandler.cs" />
      <Compile Include="Assets\Scripts\Task\Arduino\ArduinoTaskHandler.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterHandler.cs" />
+     <Compile Include="Assets\Scripts\GameEngine\Fading.cs" />
      <Compile Include="Assets\Scripts\Task\Digit\DigitTaskHandler.cs" />
      <Compile Include="Assets\Scripts\Character\CharacterMoving.cs" />
-     <Compile Include="Assets\Scripts\GameEngine\Fading.cs" />
-     <Compile Include="Assets\Scripts\GameEngine\OutroHandler.cs" />
-     <Compile Include="Assets\Scripts\Task\ButtonHandler.cs" />
+     <Compile Include="Assets\Timer.cs" />
      <Reference Include="UnityEngine">
      <HintPath>G:/DevelopmentProjects/Unity/2021.1.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>

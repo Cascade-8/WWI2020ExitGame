@@ -11,9 +11,10 @@ namespace Task
         [Header("InteractionCanvas")]
         public Canvas interactionCanvas;
 
-        public GameObject Door;
-        public GameObject Character;
-        
+        public GameObject door;
+        public GameObject character;
+        private static readonly int IsOpenTriggered = Animator.StringToHash("IsOpenTriggered");
+
         /**
          * <<summary>Selects the Expected Task Message that has to be shown, based on the name of the <param name="coll"></param></summary>
          */
@@ -52,7 +53,7 @@ namespace Task
                                         message.GetComponent<Text>().text = "\nMinecraft\nLöse die Aufgaben auf dem Minecraftserver!".ToUpper();
                     break;
                 case "Door":
-                    if (Character.GetComponent<CharacterHandler>().GETTasks() != 6) 
+                    if (character.GetComponent<CharacterHandler>().GETTasks() != 6) 
                     {
                         title.GetComponent<Text>().text = "Türe öffnen".ToUpper();
                         message.GetComponent<Text>().text = "\nSchließe erst alle Herausforderungen ab!\n".ToUpper();
@@ -62,7 +63,7 @@ namespace Task
                     {
                         title.GetComponent<Text>().text = "Türe öffnen".ToUpper();
                         message.GetComponent<Text>().text = "\nGehe hindurch!\n".ToUpper();
-                        Door.GetComponent<Animator>().SetBool("IsOpenTriggered", true);
+                        door.GetComponent<Animator>().SetBool(IsOpenTriggered, true);
                         interactionCanvas.transform.Find("InteractionHint").gameObject.SetActive(false);
                     }
                     break;

@@ -24,13 +24,12 @@ namespace Task.Minecraft
         // Update is called once per frame
         private void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                gameObject.SetActive(false);
-                submitButton.onClick.RemoveListener(HandleSubmitAction);
-                _gameHandler.ToggleActiveArea();
-            }
+            if (!Input.GetKey(KeyCode.Escape)) return;
+            gameObject.SetActive(false);
+            submitButton.onClick.RemoveListener(HandleSubmitAction);
+            _gameHandler.ToggleActiveArea();
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Handles the Action when the Submit Button is pressed</summary>
          */

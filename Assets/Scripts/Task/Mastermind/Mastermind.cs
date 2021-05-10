@@ -20,14 +20,13 @@ namespace Task.Mastermind
             expectedValue = GenerateValues();
             sockets.transform.GetChild(0).GetComponent<RowCheck>().DisplayNextRow();
         }
-        void Update()
+
+        private void Update()
         {
-            if (Input.GetKey(KeyCode.Escape))
-            {
-                CleanBoard();
-                gameObject.SetActive(false);
-                _gameHandler.ToggleActiveArea();
-            }
+            if (!Input.GetKey(KeyCode.Escape)) return;
+            CleanBoard();
+            gameObject.SetActive(false);
+            _gameHandler.ToggleActiveArea();
         }
         // ReSharper disable Unity.PerformanceAnalysis
         /**
@@ -46,11 +45,11 @@ namespace Task.Mastermind
         /**
          * <summary>Generate the wanted Solution from Random Numbers</summary>
          */
-        private int[] GenerateValues()
+        private static int[] GenerateValues()
         {
-            Random random = new Random();
-            int[] t = new int[4];
-            for (int i = 0; i < 4; i++)
+            var random = new Random();
+            var t = new int[4];
+            for (var i = 0; i < 4; i++)
             {
                 t[i] = random.Next(0, 3);
             }
@@ -61,9 +60,9 @@ namespace Task.Mastermind
          */
         public void CleanBoard()
         {
-            for (int i = 0; i < 7; i++)
+            for (var i = 0; i < 7; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (var j = 0; j < 4; j++)
                 {
                     if (sockets.transform.GetChild(i).GetChild(j).childCount > 0)
                     {
