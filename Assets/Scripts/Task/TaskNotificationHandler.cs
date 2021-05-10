@@ -34,22 +34,22 @@ namespace Task
             switch (coll)
             {
                 case "TaskCollider1":   title.GetComponent<Text>().text = "Bitübertragung".ToUpper();
-                                        message.GetComponent<Text>().text = "Finde die geheime Botschaft\nund gebe sie in das Gerät ein".ToUpper();;
+                                        message.GetComponent<Text>().text = "\nBinärzahlen\nEntschlüssle die Botschaft!".ToUpper();;
                     break;
                 case "TaskCollider2":   title.GetComponent<Text>().text = "Sicherungsschicht".ToUpper();
-                                        message.GetComponent<Text>().text = "\nKabel verbinden\nPlease execute the following task!".ToUpper();
+                                        message.GetComponent<Text>().text = "\nArduino\nErmittle die geheime Botschaft des Arduinos!".ToUpper();
                     break;
                 case "TaskCollider3":   title.GetComponent<Text>().text = "Netzwerkschicht".ToUpper();
-                                        message.GetComponent<Text>().text = "\nMastermind!\nKnacke das Passwort".ToUpper();
+                                        message.GetComponent<Text>().text = "\nMastermind!\nKnacke das Passwort!".ToUpper();
                     break;
                 case "TaskCollider4":   title.GetComponent<Text>().text = "Transportschicht".ToUpper();
-                                        message.GetComponent<Text>().text = "\nIP Adresse der DHBW rausfinden\nPlease execute the following task!".ToUpper();
+                                        message.GetComponent<Text>().text = "\nIP Adresse\nZeige deine CMD-Skills!".ToUpper();
                     break;
                 case "TaskCollider5":   title.GetComponent<Text>().text = "Sitzungsschicht".ToUpper();
-                                        message.GetComponent<Text>().text = "\nWebsite Moritz\nPlease execute the following task!".ToUpper();
+                                        message.GetComponent<Text>().text = "\nWebsite\nFinde den Code".ToUpper();
                     break;
                 case "TaskCollider6":   title.GetComponent<Text>().text = "Präsentationsschicht".ToUpper();
-                                        message.GetComponent<Text>().text = "\nTBD\nPlease execute the following task!".ToUpper();
+                                        message.GetComponent<Text>().text = "\nMinecraft\nLöse die Aufgaben auf dem Minecraftserver!".ToUpper();
                     break;
                 case "Door":
                     if (Character.GetComponent<CharacterHandler>().GETTasks() != 6) 

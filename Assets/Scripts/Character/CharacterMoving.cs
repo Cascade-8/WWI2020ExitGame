@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Character
 {
@@ -9,7 +10,7 @@ namespace Character
         public GameObject ear;
         public float walkingSpeed = 5f;
         private Vector2 _movement;
-        
+        public Animator test;
 
         [Header("Animations")] public Animator characterAnimator;
         private bool _facingRight = true;

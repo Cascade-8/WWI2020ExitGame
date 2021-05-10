@@ -9,6 +9,7 @@ namespace Task.Mastermind
     {
         public GameObject world;
         public GameObject sockets;
+        public Button submitButton;
         private GameHandler _gameHandler;
     
         public int[] expectedValue = {0,0,0,0};

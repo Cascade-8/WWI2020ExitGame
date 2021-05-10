@@ -30,14 +30,16 @@ namespace Task.Arduino
             if (Input.GetKey(KeyCode.Escape))
             {
                 gameObject.SetActive(false);
+                submitButton.onClick.RemoveListener(HandleSubmitAction);
                 _gameHandler.ToggleActiveArea();
             }
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         private void HandleSubmitAction()
         {
+            submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(0);
             if (CompareUserInput())
             {
-                
                 gameObject.SetActive(false);
                 var gameArea = world.transform.Find("GameArea");
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
@@ -50,7 +52,7 @@ namespace Task.Arduino
         {
             if (GETSolution(_keystate).ToUpper() != inputField.transform.GetChild(1).GetComponent<Text>().text.ToUpper())
             {
-                print("Input not correct");
+                submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(1);
                 return false;
             }
             submitButton.onClick.RemoveListener(HandleSubmitAction);

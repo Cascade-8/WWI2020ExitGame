@@ -29,14 +29,17 @@ namespace Task.IPAdress
             if (Input.GetKey(KeyCode.Escape))
             {
                 gameObject.SetActive(false);
+                submitButton.onClick.RemoveListener(HandleSubmitAction);
                 _gameHandler.ToggleActiveArea();
             }
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Handles the Action when the Submit Button is pressed</summary>
          */
         private void HandleSubmitAction()
         {
+            submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(0);
             if (CompareUserInput())
             {
                 gameObject.SetActive(false);
@@ -45,6 +48,10 @@ namespace Task.IPAdress
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
                 gameArea.Find("TaskColliders/TaskCollider4").GetComponent<TaskColliderHandler>().ClearTask();
                 _gameHandler.ToggleActiveArea();
+            }
+            else
+            {
+                submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(1);
             }
         }
         /**

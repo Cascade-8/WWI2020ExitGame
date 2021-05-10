@@ -1,15 +1,19 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Task
 {
     public class TaskColliderHandler : MonoBehaviour
     {
+        public GameObject character;
+        public Animator animator;
+        private static readonly int IsOpenTriggered = Animator.StringToHash("IsOpenTriggered");
+        private static readonly int FadeOut = Animator.StringToHash("FadeOut");
+        
         private bool _isActive;
         private GameObject _parent;
         private bool _isCleared;
-        public GameObject character;
-        private static readonly int IsOpenTriggered = Animator.StringToHash("IsOpenTriggered");
 
         // Start is called before the first frame update
         void Start()
@@ -34,8 +38,10 @@ namespace Task
                 _parent.GetComponent<TaskNotificationHandler>().SelectTaskMessage(name);
                 _parent.GetComponent<TaskNotificationHandler>().SetCanvasActive(true);
                 transform.Find("ScreenY").GetComponent<Renderer>().enabled = !_isCleared;
+                
             }
             else {
+                Invoke(nameof(StartFading),5);
                 character.GetComponent<SpriteRenderer>().sortingOrder = 0;
             }
         }
@@ -51,12 +57,14 @@ namespace Task
             else if (name == "DoorAreaAbove")
             {
                 character.GetComponent<SpriteRenderer>().sortingOrder = 5;
+               
             }
             else
             {
                 transform.Find("ScreenY").GetComponent<Renderer>().enabled = false;
             }
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Disables the current Task</summary>
          */
@@ -66,5 +74,11 @@ namespace Task
             transform.GetComponent<BoxCollider2D>().enabled = false;
             _isCleared = true;
         }
+
+        private void StartFading()
+        {
+            animator.SetTrigger(FadeOut);
+        }
+        
     }
 }

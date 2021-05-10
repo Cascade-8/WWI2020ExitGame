@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainWorld.unity
     guid: 1eabd5887edd972499f05c9e468dab58
+  - enabled: 1
+    path: Assets/Scenes/OutroVideo.unity
+    guid: ccd586dfc3ae5684897829963e03fd5e
   m_configObjects: {}

@@ -27,6 +27,7 @@ namespace Task.Minecraft
             if (Input.GetKey(KeyCode.Escape))
             {
                 gameObject.SetActive(false);
+                submitButton.onClick.RemoveListener(HandleSubmitAction);
                 _gameHandler.ToggleActiveArea();
             }
         }
@@ -35,15 +36,19 @@ namespace Task.Minecraft
          */
         private void HandleSubmitAction()
         {
+            submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(0);
             if (CompareUserInput())
             {
-                
                 gameObject.SetActive(false);
                 var gameArea = world.transform.Find("GameArea");
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
                 gameArea.Find("TaskColliders/TaskCollider6").GetComponent<TaskColliderHandler>().ClearTask();
                 world.GetComponent<GameHandler>().ToggleActiveArea();
+            }
+            else
+            {
+                submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(1);
             }
         }
         /**

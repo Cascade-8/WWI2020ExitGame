@@ -26,23 +26,29 @@ namespace Task.Website
             if (Input.GetKey(KeyCode.Escape))
             {
                 gameObject.SetActive(false);
+                submitButton.onClick.RemoveListener(HandleSubmitAction);
                 _gameHandler.ToggleActiveArea();
             }
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Handles the Action when the Submit Button is pressed</summary>
          */
         private void HandleSubmitAction()
         {
+            submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(0);
             if (CompareUserInput())
             {
-                
                 gameObject.SetActive(false);
                 var gameArea = world.transform.Find("GameArea");
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
                 gameArea.Find("TaskColliders/TaskCollider5").GetComponent<TaskColliderHandler>().ClearTask();
                 world.GetComponent<GameHandler>().ToggleActiveArea();
+            }
+            else
+            {
+                submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(1);
             }
         }
         /**

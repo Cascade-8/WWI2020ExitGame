@@ -38,6 +38,7 @@ namespace Task.Digit
             if (Input.GetKey(KeyCode.Escape))
             {
                 gameObject.SetActive(false);
+                submitButton.onClick.RemoveListener(HandleSubmitAction);
                 _gameHandler.ToggleActiveArea();
             }
         }
@@ -88,16 +89,21 @@ namespace Task.Digit
          */
         private void HandleSubmitAction()
         {
-            print("Klick");
+            submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(0);
             if (CompareUserInput())
             {
-                gameObject.SetActive(false);
+                submitButton.onClick.RemoveListener(HandleSubmitAction);
+                Destroy(gameObject);
                 var gameArea = world.transform.Find("GameArea");
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetTasks(1);
                 gameArea.Find("Character").GetComponent<CharacterHandler>().SetScore(187);
                 gameArea.Find("TaskColliders/TaskCollider1").GetComponent<TaskColliderHandler>().ClearTask();
                 world.GetComponent<GameHandler>().ToggleActiveArea();
                 
+            }
+            else
+            {
+                submitButton.GetComponent<ButtonHandler>().PlaySoundeffect(1);
             }
         }
         /**
@@ -113,8 +119,6 @@ namespace Task.Digit
                     return false;
                 }
             }
-            submitButton.onClick.RemoveListener(HandleSubmitAction);
-            Destroy(gameObject);
             return true;
         }
     }

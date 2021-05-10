@@ -14,13 +14,13 @@ namespace Task.Mastermind
         private int _correctColors = 0;
         private int _correctPosition = 0;
         private bool _wasChecked;
-        
-        void OnEnable()
+
+        private void OnEnable()
         {
             _correctColors = 0;
             _correctPosition = 0;
             _wasChecked = false;
-            _expectedSolution = master.GetComponent<global::Task.Mastermind.Mastermind>().expectedValue;
+            _expectedSolution = master.GetComponent<Mastermind>().expectedValue;
             for (int i = 0; i < transform.childCount-1; i++)
             {
                 transform.GetChild(i).GetComponent<Collider2D>().enabled = true;
@@ -29,7 +29,7 @@ namespace Task.Mastermind
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (IsFull() && !_wasChecked)
             {
@@ -49,18 +49,26 @@ namespace Task.Mastermind
                 }
             }
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         /**
          * <summary>Detects the next inactive Row to set it Active</summary>
          */
         public void DisplayNextRow()
         {
-            for (int i = 0; i < transform.parent.childCount; i++)
+            bool lastRow = true;
+            for (var i = 0; i < transform.parent.childCount; i++)
             {
                 if (!transform.parent.GetChild(i).gameObject.activeSelf)
                 {
+                    lastRow = false;
                     transform.parent.GetChild(i).gameObject.SetActive(true);
                     break;
                 }
+            }
+            if (lastRow)
+            {
+                master.GetComponent<Mastermind>().CleanBoard();
+                DisplayNextRow();
             }
         }
         /**
@@ -69,7 +77,7 @@ namespace Task.Mastermind
         private bool IsFull()
         {
             bool b = true;
-            for (int i = 0; i < transform.childCount-1; i++)
+            for (var i = 0; i < transform.childCount-1; i++)
             {
                 if (transform.GetChild(i).transform.childCount < 1)
                 {
@@ -92,16 +100,15 @@ namespace Task.Mastermind
          */
         private void CountCorrectColors()
         {
-            int[] hitPositions = {-1,-1,-1,-1};
-            
-            for (int i = 0; i < transform.childCount-1; i++) 
+            int[] tempArray = {_expectedSolution[0],_expectedSolution[1],_expectedSolution[2],_expectedSolution[3]};
+            for (var i = 0; i < transform.childCount - 1; i++)
             {
-                int colorID = transform.GetChild(i).transform.GetChild(0).GetComponent<LampAttributes>().colorID;
-                for (int j = 0; j < _expectedSolution.Length; j++)
+                var colorID = transform.GetChild(i).transform.GetChild(0).GetComponent<LampAttributes>().colorID;
+                for (var j = 0; j < tempArray.Length; j++)
                 {
-                    if (colorID == _expectedSolution[j] && !alreadyCounted(hitPositions,j))
+                    if (colorID == tempArray[j])
                     {
-                        hitPositions[i] = j;
+                        tempArray[j] = -1;
                         _correctColors++;
                         break;
                     }
@@ -113,25 +120,14 @@ namespace Task.Mastermind
          */
         private void CountCorrectPositions()
         {
-            for (int i = 0; i < transform.childCount - 1; i++)
+            for (var i = 0; i < transform.childCount - 1; i++)
             {
-                int colorID = transform.GetChild(i).transform.GetChild(0).GetComponent<LampAttributes>().colorID;
+                var colorID = transform.GetChild(i).transform.GetChild(0).GetComponent<LampAttributes>().colorID;
                 if (colorID == _expectedSolution[i])
                 {
                     _correctPosition++;
                 }
             }
-        }
-        /**
-         * <summary>Checks if a Lamp has already been counted, so it won't count it multiple Times</summary>
-         */
-        private bool alreadyCounted(int[] hP, int pos)
-        {
-            foreach (int n in hP)
-            {
-                if (n == pos) return true;
-            }
-            return false;
         }
         // ReSharper disable Unity.PerformanceAnalysis
         /**
@@ -143,7 +139,7 @@ namespace Task.Mastermind
             int corCol = _correctColors;
             for (int i = 0; i < 4; i++)
             {
-                SpriteRenderer sR = transform.Find("SolutionSocket").GetChild(i).GetComponent<SpriteRenderer>();
+                var sR = transform.Find("SolutionSocket").GetChild(i).GetComponent<SpriteRenderer>();
                 if (corPos != 0)
                 {
                     sR.enabled = true;

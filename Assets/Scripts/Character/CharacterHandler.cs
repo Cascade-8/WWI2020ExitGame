@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Character
@@ -6,6 +7,14 @@ namespace Character
     {
         private byte _completedTasks;
         private int _score;
+
+        private void Update()
+        {
+            if (Input.GetKey(KeyCode.F1))
+            {
+                _completedTasks = 6;
+            }
+        }
 
         public int GETScore()
         {
